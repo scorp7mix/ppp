@@ -13,9 +13,9 @@ class Controller
     public function __construct()
     {
         $this->loader = new Twig_Loader_Filesystem(__DIR__ . '/../Views');
-        $this->twig = new Twig_Environment($this->loader/*, array(
+        $this->twig = new Twig_Environment($this->loader, [
             'cache' => __DIR__ . '/../cache',
-        )*/);
+        ]);
     }
 
     protected function render($file, $params = [], $custom = false)

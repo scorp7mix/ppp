@@ -15,8 +15,3 @@ function autoload($class)
 spl_autoload_register('autoload');
 
 require_once __DIR__ . '/vendor/autoload.php';
-
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/Views');
-$twig = new Twig_Environment($loader, array(
-    'cache' => '/cache',
-));
