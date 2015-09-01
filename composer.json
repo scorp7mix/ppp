@@ -1,0 +1,14 @@
+{
+    "name": "scorp7mix/ppp",
+    "authors": [
+        {
+            "name": "scorp7mix",
+            "email": "scorp7mix@gmail.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "components/jquery": "^2.1",
+        "twig/twig": "^1.21"
+    }
+}

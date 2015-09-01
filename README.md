@@ -1,1 +1,1 @@
-# ppp
+# mini application for stock

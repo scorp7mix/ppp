@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+    <h1>Перечень красок:</h1>
+    <br>
+    <a href="/paint/create">Добавить новую краску</a>
+    <br>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Наименование</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paint in paints %}
+            <tr>
+                <td>{{ paint.id }}</td>
+                <td>{{ paint.name }}</td>
+                <td><a href="/paint/update/{{ paint.id }}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                <td><a href="/paint/delete/{{ paint.id }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

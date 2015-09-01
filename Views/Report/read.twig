@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+<h1>Все движения:</h1>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Дата</th>
+        <th>Движение</th>
+        <th>Партия</th>
+        <th>Откуда</th>
+        <th>Куда</th>
+        <th>Кол-во</th>
+        <th>План</th>
+        <th>КР</th>
+        <th>Изделий</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for move in moves %}
+        <tr>
+            <td>{{ move.id }}</td>
+            <td>{{ move.date }}</td>
+            <td>{{ move.type_name }}</td>
+            <td>{{ move.consignment_name }} [{{ move.paint_name }}]</td>
+            <td>{{ move.place_from_name }} {% if move.place_from_name != '' %}[{{ move.warehouse_from_name }}]{% endif %}</td>
+            <td>{{ move.place_to_name }} {% if move.place_to_name != '' %}[{{ move.warehouse_to_name }}]{% endif %}</td>
+            <td>{{ move.qty }}</td>
+            <td>{{ move.qty_t }}</td>
+            <td>{{ move.kr }}</td>
+            <td>{{ move.parts }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

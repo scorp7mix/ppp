@@ -1,0 +1,43 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+<h1>Расход в цеху</h1>
+<br>
+<form action="#" method="post">
+    <div class="form-group">
+        <label for="id-id_consignment">Партия</label>
+        <select name="id_consignment" id="id-id_consignment">
+            <option></option>
+            {% for c in consignments %}
+                <option value={{ c.id }}>{{ c.name }} [{{ c.paint_name }}]</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id-id_from">Место в цеху</label>
+        <select name="id_from" id="id-id_from">
+            <option></option>
+            {% for pw in places_workshop %}
+                <option value={{ pw.id }}>{{ pw.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id-qty">Количество</label>
+        <input type="number" name="qty" id="id-qty">
+    </div>
+    <div class="form-group">
+        <label for="id-qty_t">Количество по плану</label>
+        <input type="number" name="qty_t" id="id-qty_t">
+    </div>
+    <div class="form-group">
+        <label for="id-kr">КР</label>
+        <input type="text" name="kr" id="id-kr">
+    </div>
+    <div class="form-group">
+        <label for="id-parts">Изделий обработано</label>
+        <input type="number" name="parts" id="id-parts">
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock %}

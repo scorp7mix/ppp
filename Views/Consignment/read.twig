@@ -1,0 +1,33 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+<h1>Перечень партий:</h1>
+<br>
+<a href="/consignment/create">Добавить новую партию</a>
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Наименование</th>
+        <th>Краска</th>
+        <th>Срок годности</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for consignment in consignments %}
+    <tr>
+        <td>{{ consignment.id }}</td>
+        <td>{{ consignment.name }}</td>
+        <td>{{ consignment.paint_name }}</td>
+        <td>{{ consignment.date_of_end }}</td>
+        <td><a href="/consignment/update/{{ consignment.id }}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+        <td><a href="/consignment/delete/{{ consignment.id }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

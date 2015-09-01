@@ -1,5 +1,9 @@
 <?php
 
+use Core\Application;
+
+require_once __DIR__ . '/autoload.php';
+
 set_exception_handler(
     function(Exception $exception)
     {
@@ -7,10 +11,4 @@ set_exception_handler(
     }
 );
 
-$controller = isset($_GET['c']) ? $_GET['c'] : 'consignment';
-$action = isset($_GET['a']) ? $_GET['a'] : 'index';
-
-require_once __DIR__ . '/controllers/' . $controller . '.php';
-
-$function = 'action_' . $controller . '_' . $action;
-$function($db);
+Application::start();
