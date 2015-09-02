@@ -12,7 +12,8 @@
         <th>Партия</th>
         <th>Откуда</th>
         <th>Куда</th>
-        <th>Кол-во</th>
+        <th>Расход</th>
+        <th>Приход</th>
         <th>План</th>
         <th>КР</th>
         <th>Изделий</th>
@@ -27,7 +28,8 @@
             <td>{{ move.consignment_name }} [{{ move.paint_name }}]</td>
             <td>{{ move.place_from_name }} {% if move.place_from_name != '' %}[{{ move.warehouse_from_name }}]{% endif %}</td>
             <td>{{ move.place_to_name }} {% if move.place_to_name != '' %}[{{ move.warehouse_to_name }}]{% endif %}</td>
-            <td>{{ move.qty }}</td>
+            <td>{{ move.qty_from }}</td>
+            <td>{{ move.qty_to }}</td>
             <td>{{ move.qty_t }}</td>
             <td>{{ move.kr }}</td>
             <td>{{ move.parts }}</td>

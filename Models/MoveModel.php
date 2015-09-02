@@ -12,7 +12,8 @@ use Core\Model;
  * @property $id_from
  * @property $id_to
  * @property $id_type
- * @property $qty
+ * @property $qty_from
+ * @property $qty_to
  * @property $qty_t
  * @property $kr
  * @property $parts
@@ -28,7 +29,8 @@ class MoveModel extends Model
             'id_from',
             'id_to',
             'id_type',
-            'qty',
+            'qty_from',
+            'qty_to',
             'qty_t',
             'kr',
             'parts',

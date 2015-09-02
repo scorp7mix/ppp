@@ -4,27 +4,27 @@
 <h1>Прием на склад</h1>
 <br>
 <form action="#" method="post">
-    <div class="form-group">
-        <label for="id-id_consignment">Партия</label>
-        <select name="id_consignment" id="id-id_consignment">
+    <div class="row form-group">
+        <label for="id-id_consignment" class="col-xs-2">Партия</label>
+        <select name="id_consignment" id="id-id_consignment" class="col-xs-2">
             <option></option>
             {% for c in consignments %}
                 <option value={{ c.id }}>{{ c.name }} [{{ c.paint_name }}]</option>
             {% endfor %}
         </select>
     </div>
-    <div class="form-group">
-        <label for="id-id_to">Место на складе</label>
-        <select name="id_to" id="id-id_to">
+    <div class="row form-group">
+        <label for="id-id_to" class="col-xs-2">Место на складе</label>
+        <select name="id_to" id="id-id_to" class="col-xs-2">
             <option></option>
             {% for ps in places_stock %}
             <option value={{ ps.id }}>{{ ps.name }}</option>
             {% endfor %}
         </select>
     </div>
-    <div class="form-group">
-        <label for="id-qty">Количество</label>
-        <input type="number" name="qty" id="id-qty">
+    <div class="row form-group">
+        <label for="id-qty" class="col-xs-2">Количество</label>
+        <input type="number" name="qty" id="id-qty" class="col-xs-1">
     </div>
     <button type="submit" class="btn btn-primary">Добавить</button>
 </form>

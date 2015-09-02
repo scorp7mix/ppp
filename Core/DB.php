@@ -41,4 +41,12 @@ class DB
 
         return $sth->execute($params);
     }
+
+    public function rawQuery($sql, $params = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($params);
+
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

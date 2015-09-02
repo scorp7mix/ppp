@@ -1,0 +1,55 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+
+    <h1>Остатки по партиям:</h1>
+    <br>
+    <div class="panel-group" id="report-consignment-accordion" role="tablist" aria-multiselectable="true">
+        {% for consignment in consignments %}
+            {% if consignment.rows %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{{ consignment.id }}">
+                        <h3 class="panel-title">
+                            <a role="button"
+                               data-toggle="collapse"
+                               data-parent="#report-consignment-accordion"
+                               href="#collapse{{ consignment.id }}"
+                               aria-expanded="true"
+                               aria-controls="collapse{{ consignment.id }}">
+                                {{ consignment.name }} [{{ consignment.paint_name }}]
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapse{{ consignment.id }}"
+                         class="panel-collapse collapse"
+                         role="tabpanel"
+                         aria-labelledby="heading{{ consignment.id }}">
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Склад</th>
+                                    <th>Расход</th>
+                                    <th>Приход</th>
+                                    <th>Остаток</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in consignment.rows %}
+                                    <tr>
+                                        <td>{{ row.stock }}</td>
+                                        <td>{{ row.qty_from }}</td>
+                                        <td>{{ row.qty_to }}</td>
+                                        <td>{{ row.qty_res }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

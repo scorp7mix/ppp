@@ -1,0 +1,55 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+
+    <h1>Остатки по складам:</h1>
+    <br>
+    <div class="panel-group" id="report-stock-accordion" role="tablist" aria-multiselectable="true">
+        {% for stock in stocks %}
+            {% if stock.rows %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{{ stock.id }}">
+                        <h3 class="panel-title">
+                            <a role="button"
+                               data-toggle="collapse"
+                               data-parent="#report-stock-accordion"
+                               href="#collapse{{ stock.id }}"
+                               aria-expanded="true"
+                               aria-controls="collapse{{ stock.id }}">
+                                {{ stock.name }}
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapse{{ stock.id }}"
+                         class="panel-collapse collapse"
+                         role="tabpanel"
+                         aria-labelledby="heading{{ stock.id }}">
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Краска</th>
+                                    <th>Расход</th>
+                                    <th>Приход</th>
+                                    <th>Остаток</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in stock.rows %}
+                                    <tr>
+                                        <td>{{ row.paint_name }}</td>
+                                        <td>{{ row.qty_from }}</td>
+                                        <td>{{ row.qty_to }}</td>
+                                        <td>{{ row.qty_res }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

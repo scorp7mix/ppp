@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Учет краски ППП</title>
     <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/dropdowns-enhancement.css">
     <script src="/vendor/components/jquery/jquery.min.js"></script>
     <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/twbs/bootstrap/dist/js/dropdowns-enhancement.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -38,6 +40,13 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/report/main">Все движения</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/report/stock">Остатки по складам</a></li>
+                        <li><a href="/report/paint">Остатки по краскам</a></li>
+                        <li><a href="/report/consignment">Остатки по партиям</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/report/to">Поставки на склад</a></li>
+                        <li><a href="/report/from">Расход в цеху</a></li>
                     </ul>
                 </li>
             </ul>

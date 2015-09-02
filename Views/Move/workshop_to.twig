@@ -4,39 +4,39 @@
 <h1>Расход в цеху</h1>
 <br>
 <form action="#" method="post">
-    <div class="form-group">
-        <label for="id-id_consignment">Партия</label>
-        <select name="id_consignment" id="id-id_consignment">
+    <div class="row form-group">
+        <label for="id-id_consignment" class="col-xs-2">Партия</label>
+        <select name="id_consignment" id="id-id_consignment" class="col-xs-2">
             <option></option>
             {% for c in consignments %}
                 <option value={{ c.id }}>{{ c.name }} [{{ c.paint_name }}]</option>
             {% endfor %}
         </select>
     </div>
-    <div class="form-group">
-        <label for="id-id_from">Место в цеху</label>
-        <select name="id_from" id="id-id_from">
+    <div class="row form-group">
+        <label for="id-id_from" class="col-xs-2">Место в цеху</label>
+        <select name="id_from" id="id-id_from" class="col-xs-2">
             <option></option>
             {% for pw in places_workshop %}
                 <option value={{ pw.id }}>{{ pw.name }}</option>
             {% endfor %}
         </select>
     </div>
-    <div class="form-group">
-        <label for="id-qty">Количество</label>
-        <input type="number" name="qty" id="id-qty">
+    <div class="row form-group">
+        <label for="id-qty" class="col-xs-2">Количество</label>
+        <input type="number" name="qty" id="id-qty" class="col-xs-1">
     </div>
-    <div class="form-group">
-        <label for="id-qty_t">Количество по плану</label>
-        <input type="number" name="qty_t" id="id-qty_t">
+    <div class="row form-group">
+        <label for="id-qty_t" class="col-xs-2">Количество по плану</label>
+        <input type="number" name="qty_t" id="id-qty_t" class="col-xs-1">
     </div>
-    <div class="form-group">
-        <label for="id-kr">КР</label>
-        <input type="text" name="kr" id="id-kr">
+    <div class="row form-group">
+        <label for="id-kr" class="col-xs-2">КР</label>
+        <input type="text" name="kr" id="id-kr" class="col-xs-2">
     </div>
-    <div class="form-group">
-        <label for="id-parts">Изделий обработано</label>
-        <input type="number" name="parts" id="id-parts">
+    <div class="row form-group">
+        <label for="id-parts" class="col-xs-2">Изделий обработано</label>
+        <input type="number" name="parts" id="id-parts" class="col-xs-1">
     </div>
     <button type="submit" class="btn btn-primary">Добавить</button>
 </form>

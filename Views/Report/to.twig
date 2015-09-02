@@ -1,0 +1,78 @@
+{% extends 'layout.twig' %}
+
+{% block view %}
+
+    <h1>Поставки на склад:</h1>
+    <br>
+    <div class="panel-group" id="report-to-accordion" role="tablist" aria-multiselectable="true">
+        {% for item in list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{{ item.year }}" onclick="$('#collapse{{ item.year }}').collapse('toggle')">
+                        <h3 class="panel-title">
+                            <a role="button"
+                               data-toggle="collapse"
+                               data-parent="#report-to-accordion"
+                               href="#collapse{{ item.year }}"
+                               aria-expanded="true"
+                               aria-controls="collapse{{ item.year }}">
+                                {{ item.year }}
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapse{{ item.year }}"
+                         class="panel-collapse collapse"
+                         role="tabpanel"
+                         aria-labelledby="heading{{ item.year }}">
+                        <div class="panel-body">
+                            <div class="panel-group" id="report-to-sub-accordion" role="tablist" aria-multiselectable="true">
+                            {% for subitem in item.months %}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading{{ subitem.month }}" onclick="$('#collapse{{ subitem.month }}').collapse('toggle')">
+                                        <h3 class="panel-title">
+                                            <a role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#report-to-sub-accordion"
+                                               href="#collapse{{ subitem.month }}"
+                                               aria-expanded="true"
+                                               aria-controls="collapse{{ subitem.month }}">
+                                                {{ subitem.month }}
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapse{{ subitem.month }}"
+                                         class="panel-collapse collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="heading{{ subitem.month }}">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Дата</th>
+                                                    <th>Партия</th>
+                                                    <th>Место в цеху</th>
+                                                    <th>Приход</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for row in subitem.rows %}
+                                                    <tr>
+                                                        <td>{{ row.id }}</td>
+                                                        <td>{{ row.date }}</td>
+                                                        <td>{{ row.consignment_name }} [{{ row.paint_name }}]</td>
+                                                        <td>{{ row.place_to_name }}</td>
+                                                        <td>{{ row.qty_to }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}

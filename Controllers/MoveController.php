@@ -24,10 +24,10 @@ class MoveController extends Controller
             $move->id_type = '1';
             $move->id_consignment = $_POST['id_consignment'];
             $move->id_to = $_POST['id_to'];
-            $move->qty = $_POST['qty'];
+            $move->qty_to = $_POST['qty'];
             $move->create();
 
-            header('Location: /move/read');
+            header('Location: /report/main');
         }
 
         $this->render('to_stock', [
@@ -54,12 +54,20 @@ class MoveController extends Controller
             $move->id_type = '2';
             $move->id_consignment = $_POST['id_consignment'];
             $move->id_from = $_POST['id_from'];
-            $move->id_to = $_POST['id_to'];
-            $move->qty = $_POST['qty'];
+            $move->qty_from = $_POST['qty'];
             $move->kr = $_POST['kr'];
             $move->create();
 
-            header('Location: /move/read');
+            $move = new MoveModel();
+
+            $move->id_type = '2';
+            $move->id_consignment = $_POST['id_consignment'];
+            $move->id_to = $_POST['id_to'];
+            $move->qty_to = $_POST['qty'];
+            $move->kr = $_POST['kr'];
+            $move->create();
+
+            header('Location: /report/main');
         }
 
         $this->render('stock_to_workshop', [
@@ -86,11 +94,18 @@ class MoveController extends Controller
             $move->id_type = '3';
             $move->id_consignment = $_POST['id_consignment'];
             $move->id_from = $_POST['id_from'];
-            $move->id_to = $_POST['id_to'];
-            $move->qty = $_POST['qty'];
+            $move->qty_from = $_POST['qty'];
             $move->create();
 
-            header('Location: /move/read');
+            $move = new MoveModel();
+
+            $move->id_type = '3';
+            $move->id_consignment = $_POST['id_consignment'];
+            $move->id_to = $_POST['id_to'];
+            $move->qty_to = $_POST['qty'];
+            $move->create();
+
+            header('Location: /report/main');
         }
 
         $this->render('workshop_to_stock', [
@@ -118,13 +133,13 @@ class MoveController extends Controller
             $move->id_type = '4';
             $move->id_consignment = $_POST['id_consignment'];
             $move->id_from = $_POST['id_from'];
-            $move->qty = $_POST['qty'];
+            $move->qty_from = $_POST['qty'];
             $move->qty_t = $_POST['qty_t'];
             $move->kr = $_POST['kr'];
             $move->parts = $_POST['parts'];
             $move->create();
 
-            header('Location: /move/read');
+            header('Location: /report/main');
         }
 
         $this->render('workshop_to', [

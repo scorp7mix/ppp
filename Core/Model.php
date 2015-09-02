@@ -10,16 +10,27 @@ abstract class Model
 
     public $data = [];
 
+    /**
+     * @param $k
+     * @param $v
+     */
     public function __set($k, $v)
     {
         $this->data[$k] = $v;
     }
 
+    /**
+     * @param $k
+     * @return mixed
+     */
     public function __get($k)
     {
         return $this->data[$k];
     }
 
+    /**
+     * @return string
+     */
     protected static function fullSQL()
     {
         $schema = static::$schema;
@@ -45,6 +56,18 @@ abstract class Model
     }
 
     /**
+     * @param $sql
+     * @param array $params
+     * @return array
+     */
+    public static function query($sql, $params = [])
+    {
+        $db = DB::getInstance();
+
+        return $db->rawQuery($sql, $params);
+    }
+
+    /**
      * @return array
      */
     public static function read()
@@ -64,6 +87,8 @@ abstract class Model
     }
 
     /**
+     * @param $column
+     * @param $value
      * @return array
      */
     public static function readByColumnValue($column, $value)
@@ -83,6 +108,28 @@ abstract class Model
         return $data;
     }
 
+
+    /**
+     * @param $condition
+     * @param array $params
+     * @return array
+     */
+    public static function readByCondition($condition, $params = [])
+    {
+        $sql = static::fullSQL();
+        $sql .= ' WHERE ' . $condition;
+
+        $db = DB::getInstance();
+
+        $result = $db->query($sql, get_called_class(), $params);
+
+        $data = [];
+        foreach ($result as $row) {
+            $data[] = $row->data;
+        }
+
+        return $data;
+    }
     /**
      * @param $id
      * @return mixed
